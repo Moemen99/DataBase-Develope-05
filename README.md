@@ -95,3 +95,68 @@ Remember to verify the inserted data after execution:
 - Check the number of affected rows in the execution results.
 
 As you become more comfortable with INSERT operations, you'll be able to efficiently manage data in your SQL Server databases.
+
+
+
+
+
+# SQL Server: Data Manipulation Language (DML) 
+
+## Multiple-Row INSERT
+
+Adding multiple records at once is efficient using the row constructor method:
+
+```sql
+INSERT INTO Employees 
+VALUES 
+('Mai', 'Mohamed', '02-09-2010', 'Giza', 'F', 5000, 1, NULL),
+('Ahmed', 'Ali', '02-09-2010', 'Tanta', 'M', 1000, 2, NULL),
+('Omar', 'Ali', '02-09-2010', 'Cairo', 'M', 3000, 1, NULL),
+('Mona', 'Mohamed', '02-09-2010', 'Giza', 'F', 2000, 1, NULL)
+```
+
+This inserts four employee records in one statement.
+
+## UPDATE Operations
+
+### Update a Single Column
+```sql
+UPDATE Employees
+SET EmpAddress = 'Giza'
+WHERE Id = 1
+```
+
+### Update Multiple Columns
+```sql
+UPDATE Employees 
+SET FName = 'Hamada', LName = 'Lalo'
+WHERE id = 2
+```
+
+### Conditional Update
+```sql
+UPDATE Employees 
+SET Salary += Salary * 0.1 
+WHERE Address = 'Cairo' AND Salary < 5000
+```
+
+This increases salary by 10% for employees in Cairo with salary less than 5000.
+
+## DELETE Operation
+
+Remove a specific record:
+
+```sql
+DELETE FROM Employees 
+WHERE Id = 6
+```
+
+**Note:** Deleted IDs are not reused for new insertions to maintain data integrity and allow potential recovery.
+
+## Additional Notes
+
+- You can add records using the table wizard in SQL Server Management Studio.
+- New records will use the next available ID, skipping deleted IDs.
+- You can update or delete records directly in the table view by right-clicking.
+
+Remember to always use WHERE clauses in UPDATE and DELETE operations to avoid unintended changes to your data.
