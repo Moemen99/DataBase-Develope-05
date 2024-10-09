@@ -1,5 +1,3 @@
-
-```markdown
 # SQL Server: Data Manipulation Language (DML)
 
 ## Table of Contents
@@ -97,8 +95,3 @@ Remember to verify the inserted data after execution:
 - Check the number of affected rows in the execution results.
 
 As you become more comfortable with INSERT operations, you'll be able to efficiently manage data in your SQL Server databases.
-```
-
-This Markdown file provides a comprehensive overview of the INSERT operation in SQL Server's DML. It includes examples, best practices, a visual representation of the process, and additional context. You can easily add this to your GitHub repository as a single file.
-
-Would you like me to make any changes or additions to this content?
