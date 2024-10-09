@@ -160,3 +160,24 @@ WHERE Id = 6
 - You can update or delete records directly in the table view by right-clicking.
 
 Remember to always use WHERE clauses in UPDATE and DELETE operations to avoid unintended changes to your data.
+
+
+## Visualizing DML Operations
+
+```mermaid
+graph TD
+    A[Start] --> B{Operation Type?}
+    B -->|INSERT| C[Prepare Data]
+    B -->|UPDATE| D[Specify Changes]
+    B -->|DELETE| E[Identify Records]
+    C --> F[Execute INSERT]
+    D --> G[Execute UPDATE]
+    E --> H[Execute DELETE]
+    F --> I[Verify Results]
+    G --> I
+    H --> I
+    I --> J[End]
+```
+
+This diagram illustrates the general process for DML operations in SQL Server.
+
