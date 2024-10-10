@@ -285,3 +285,79 @@ These advanced features allow for more complex data retrieval and analysis.
 ## Conclusion
 
 The SELECT statement is a powerful tool in SQL for retrieving and displaying data. By mastering its basic syntax and features, you can effectively query databases to extract the information you need.
+
+
+
+
+
+# SQL WHERE Clause Examples
+
+The WHERE clause in SQL is used to filter records based on specific conditions. Here are various examples:
+
+## Equality Comparison
+
+Select a student with a specific ID:
+
+```sql
+SELECT St_Id, St_FName, St_Age, St_Address
+FROM Student
+WHERE St_Id = 1
+```
+
+## Greater Than Comparison
+
+Get students older than 22:
+
+```sql
+SELECT St_Id, St_FName, St_Age, St_Address
+FROM Student 
+WHERE St_Age > 22
+```
+
+## Range Comparison
+
+Using AND:
+```sql
+SELECT St_Id, St_FName, St_Age, St_Address
+FROM Student 
+WHERE St_Age >= 22 AND St_Age <= 29
+```
+
+Using BETWEEN:
+```sql
+SELECT St_Id, St_FName, St_Age, St_Address
+FROM Student 
+WHERE St_Age BETWEEN 22 AND 29
+```
+
+## Multiple Conditions with OR
+
+Get students from specific cities:
+
+```sql
+SELECT St_Id, St_FName, St_Age, St_Address
+FROM Student 
+WHERE St_Address = 'Cairo' OR St_Address = 'Alex' OR St_Address = 'Mansoura'
+```
+
+## Using IN Clause
+
+A more concise way to check multiple possible values:
+
+```sql
+SELECT St_Id, St_FName, St_Age, St_Address
+FROM Student 
+WHERE St_Address IN ('Cairo', 'Alex', 'Mansoura')
+```
+
+## Using NOT IN Clause
+
+Exclude specific values:
+
+```sql
+SELECT St_Id, St_FName, St_Age, St_Address
+FROM Student 
+WHERE St_Address NOT IN ('Cairo', 'Alex', 'Mansoura')
+```
+
+These examples demonstrate various ways to use the WHERE clause to filter data in SQL queries.
