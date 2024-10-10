@@ -361,3 +361,137 @@ WHERE St_Address NOT IN ('Cairo', 'Alex', 'Mansoura')
 ```
 
 These examples demonstrate various ways to use the WHERE clause to filter data in SQL queries.
+
+
+
+
+# SQL LIKE Patterns and NULL Comparisons
+
+## NULL Comparisons
+
+When dealing with NULL values in SQL, we use `IS NULL` or `IS NOT NULL` instead of `= NULL`.
+
+```sql
+-- This query won't return any results
+SELECT St_Id, St_FName 
+FROM Student 
+WHERE St_Super = NULL
+
+-- Correct way to find students without supervisors
+SELECT St_Id, St_FName 
+FROM Student 
+WHERE St_Super IS NULL
+
+-- Find students with supervisors
+SELECT St_Id, St_FName 
+FROM Student 
+WHERE St_Super IS NOT NULL
+```
+
+## LIKE Patterns
+
+The LIKE operator is used for pattern matching in SQL. Here are some common patterns:
+
+```sql
+/*
+_ => One Character
+% => Zero or More Characters
+*/
+```
+
+### Pattern Examples with Practical SQL Queries
+
+1. `'a%h'`: Matches strings that start with 'a' and end with 'h'
+   ```sql
+   SELECT St_FName
+   FROM Student
+   WHERE St_FName LIKE 'a%h'
+   -- Matches: "ah", "aghjklh", "ahmed shah"
+   ```
+
+2. '%a_': Matches strings that have 'a' as the second-to-last character
+   ```sql
+   SELECT St_FName
+   FROM Student
+   WHERE St_FName LIKE '%a_'
+   -- Matches: "Ziad", "Omar", "Marwan"
+   ```
+
+3. '[ahm]%': Matches strings that start with 'a', 'h', or 'm'
+   ```sql
+   SELECT St_FName
+   FROM Student
+   WHERE St_FName LIKE '[ahm]%'
+   -- Matches: "Ahmed", "Hassan", "Mohamed"
+   ```
+
+4. '[^ahm]%': Matches strings that do not start with 'a', 'h', or 'm'
+   ```sql
+   SELECT St_FName
+   FROM Student
+   WHERE St_FName LIKE '[^ahm]%'
+   -- Matches: "Ziad", "Omar", "Karim"
+   ```
+
+5. '[a-h]%': Matches strings that start with any letter from 'a' to 'h'
+   ```sql
+   SELECT St_FName
+   FROM Student
+   WHERE St_FName LIKE '[a-h]%'
+   -- Matches: "Ahmed", "Bassem", "Hany"
+   ```
+
+6. '[^a-h]%': Matches strings that do not start with letters 'a' through 'h'
+   ```sql
+   SELECT St_FName
+   FROM Student
+   WHERE St_FName LIKE '[^a-h]%'
+   -- Matches: "Karim", "Omar", "Ziad"
+   ```
+
+7. '[346]%': Matches strings that start with '3', '4', or '6'
+   ```sql
+   SELECT St_Id
+   FROM Student
+   WHERE CAST(St_Id AS VARCHAR) LIKE '[346]%'
+   -- Matches IDs: 3, 34, 415, 6789
+   ```
+
+8. '%[%]': Matches strings that end with a '%' character
+   ```sql
+   SELECT St_FName
+   FROM Student
+   WHERE St_FName LIKE '%[%]'
+   -- Matches: "Growth 10%", "Percentage%"
+   ```
+
+9. '%[_]%': Matches strings containing an underscore
+   ```sql
+   SELECT St_FName
+   FROM Student
+   WHERE St_FName LIKE '%[_]%'
+   -- Matches: "Ahmed_Ali", "Mohamed_Hassan"
+   ```
+
+10. '[_]%[_]': Matches strings that start and end with an underscore
+    ```sql
+    SELECT St_FName
+    FROM Student
+    WHERE St_FName LIKE '[_]%[_]'
+    -- Matches: "_Ahmed_", "_Student_Name_"
+    ```
+
+### Additional Practical Example
+
+To find students whose names have 'a' as the second letter:
+
+```sql
+SELECT St_Id, St_FName 
+FROM Student
+WHERE St_Fname LIKE '_a%'
+-- Matches: Mai, Fady, Marwa, Nadia, Hassan
+```
+
+## Conclusion
+
+Understanding NULL comparisons and LIKE patterns is crucial for effective data filtering in SQL. These tools allow for precise querying of data based on specific patterns or the presence/absence of values. The practical examples provided demonstrate how these patterns can be applied in real-world database queries to filter and retrieve specific sets of data.
