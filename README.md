@@ -495,3 +495,87 @@ WHERE St_Fname LIKE '_a%'
 ## Conclusion
 
 Understanding NULL comparisons and LIKE patterns is crucial for effective data filtering in SQL. These tools allow for precise querying of data based on specific patterns or the presence/absence of values. The practical examples provided demonstrate how these patterns can be applied in real-world database queries to filter and retrieve specific sets of data.
+
+
+
+
+
+
+# SQL DISTINCT and ORDER BY
+
+## DISTINCT Keyword
+
+The DISTINCT keyword is used to remove duplicate values from the result set.
+
+```sql
+-- Get unique first names of students
+SELECT DISTINCT St_Fname
+FROM Students 
+```
+
+This query will return a list of unique first names from the Students table.
+
+## ORDER BY Clause
+
+The ORDER BY clause is used to sort the result set in ascending or descending order.
+
+### Basic Sorting
+
+```sql
+-- Sort students by first name in ascending order (default)
+SELECT St_FName, St_LName
+FROM Student
+ORDER BY St_Fname
+```
+
+### Descending Order
+
+```sql
+-- Sort students by first name in descending order
+SELECT St_FName, St_LName
+FROM Student
+ORDER BY St_Fname DESC
+```
+
+### Multiple Column Sorting
+
+```sql
+-- Sort by first name, then by last name
+SELECT St_FName, St_LName
+FROM Student
+ORDER BY St_Fname, St_LName
+
+-- Sort by first name ascending, then by last name descending
+SELECT St_FName, St_LName
+FROM Student
+ORDER BY St_Fname, St_LName DESC
+```
+
+### Ordering by Column Position
+
+You can also order by the position of the column in the SELECT statement:
+
+```sql
+-- Order by the first and second columns in the SELECT list
+SELECT St_FName, St_LName
+FROM Student
+ORDER BY 1, 2 
+
+-- Order by the fifth column in descending order
+SELECT *
+FROM Student
+ORDER BY 5 DESC
+```
+
+**Note**: When using column positions, be cautious as any changes to the SELECT list will affect the ordering.
+
+## Best Practices
+
+1. Use DISTINCT when you need to eliminate duplicate rows from your result set.
+2. Always specify ASC or DESC in ORDER BY clauses for clarity, even though ASC is the default.
+3. When possible, use column names instead of positions in ORDER BY clauses for better readability and maintainability.
+4. Remember that ORDER BY is typically the last clause in a SELECT statement.
+
+## Conclusion
+
+DISTINCT and ORDER BY are powerful SQL features that allow you to refine your query results. DISTINCT helps in removing duplicates, while ORDER BY gives you control over how your results are sorted. Understanding these concepts is crucial for effective data retrieval and presentation in SQL.
