@@ -181,3 +181,107 @@ graph TD
 
 This diagram illustrates the general process for DML operations in SQL Server.
 
+
+
+# SQL Data Query Language (DQL): SELECT Basics
+
+## Table of Contents
+1. [Introduction to DQL](#introduction-to-dql)
+2. [Basic SELECT Statement](#basic-select-statement)
+3. [Selecting Specific Columns](#selecting-specific-columns)
+4. [Concatenating Columns](#concatenating-columns)
+5. [Using Aliases](#using-aliases)
+6. [Advanced SELECT Features](#advanced-select-features)
+
+## Introduction to DQL
+
+Data Query Language (DQL) is a part of SQL focused on retrieving data from the database. The primary command in DQL is SELECT, which is used to query and display data without affecting the database content.
+
+## Basic SELECT Statement
+
+The most basic form of the SELECT statement retrieves all columns from a table:
+
+```sql
+SELECT *
+FROM TableName
+```
+
+Example:
+```sql
+SELECT *
+FROM Student
+```
+
+This query displays all columns and rows from the Student table.
+
+## Selecting Specific Columns
+
+To retrieve only certain columns:
+
+```sql
+SELECT St_Fname, St_LName
+FROM Student
+```
+
+This query displays only the first name and last name columns from the Student table.
+
+## Concatenating Columns
+
+You can combine multiple columns in the SELECT statement:
+
+```sql
+SELECT St_FName + ' ' + St_LName
+FROM Student
+```
+
+This query concatenates the first name and last name with a space in between.
+
+## Using Aliases
+
+Aliases allow you to rename columns or expressions in the query results.
+
+### Using AS Keyword
+
+```sql
+SELECT St_FName + ' ' + St_LName AS FullName
+FROM Student
+```
+
+### Without AS Keyword
+
+```sql
+SELECT St_FName + ' ' + St_LName FullName
+FROM Student
+```
+
+### Multi-Word Aliases
+
+For aliases with multiple words, use square brackets:
+
+```sql
+SELECT St_FName + ' ' + St_LName [Full Name]
+FROM Student
+```
+
+### Alternative Alias Syntax
+
+```sql
+SELECT [Full Name] = St_FName + ' ' + St_LName 
+FROM Student
+```
+
+## Advanced SELECT Features
+
+The SELECT statement can be used with various other SQL features:
+
+- Aggregate functions
+- Grouping
+- Unions
+- Joins
+- Subqueries
+
+These advanced features allow for more complex data retrieval and analysis.
+
+## Conclusion
+
+The SELECT statement is a powerful tool in SQL for retrieving and displaying data. By mastering its basic syntax and features, you can effectively query databases to extract the information you need.
